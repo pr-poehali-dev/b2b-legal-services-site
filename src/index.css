@@ -5,43 +5,55 @@
 @tailwind utilities;
 
 :root {
-  --lp-dark: #071020;
-  --lp-bg: #080f1e;
-  --lp-surface: #0d1a2e;
-  --lp-border: rgba(196, 160, 80, 0.15);
-  --lp-gold: #c4a050;
-  --lp-gold-dark: #9a7830;
-  --lp-text: #e8dfc8;
-  --lp-muted: #7a8a9e;
+  /* ── Palette ── */
+  --lp-bg: #f8f7f4;
+  --lp-section-alt: #f2f0ec;
+  --lp-surface: #ffffff;
+  --lp-card: #ffffff;
+  --lp-surface-soft: #f0ede8;
+  --lp-dark: #1a1612;
 
-  --background: 220 30% 6%;
-  --foreground: 40 30% 90%;
-  --card: 220 30% 10%;
-  --card-foreground: 40 30% 90%;
-  --popover: 220 30% 10%;
-  --popover-foreground: 40 30% 90%;
-  --primary: 38 54% 54%;
-  --primary-foreground: 220 30% 6%;
-  --secondary: 220 20% 15%;
-  --secondary-foreground: 40 30% 90%;
-  --muted: 220 20% 15%;
-  --muted-foreground: 215 15% 55%;
-  --accent: 38 54% 54%;
-  --accent-foreground: 220 30% 6%;
+  --lp-text: #1a1612;
+  --lp-text-2: #3d3830;
+  --lp-muted: #7a7470;
+
+  --lp-border: rgba(0, 0, 0, 0.08);
+  --lp-border-soft: rgba(0, 0, 0, 0.07);
+
+  --lp-gold: #a07840;
+  --lp-gold-dark: #7a5828;
+  --lp-gold-light: #c4a060;
+
+  /* shadcn tokens */
+  --background: 40 20% 97%;
+  --foreground: 30 12% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 30 12% 10%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 30 12% 10%;
+  --primary: 30 50% 44%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 40 15% 93%;
+  --secondary-foreground: 30 12% 10%;
+  --muted: 40 10% 93%;
+  --muted-foreground: 30 6% 46%;
+  --accent: 40 15% 93%;
+  --accent-foreground: 30 12% 10%;
   --destructive: 0 62% 50%;
-  --destructive-foreground: 40 30% 90%;
-  --border: 220 20% 16%;
-  --input: 220 20% 16%;
-  --ring: 38 54% 54%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 30 8% 90%;
+  --input: 30 8% 90%;
+  --ring: 30 50% 44%;
   --radius: 0.75rem;
-  --sidebar-background: 220 30% 8%;
-  --sidebar-foreground: 40 30% 90%;
-  --sidebar-primary: 38 54% 54%;
-  --sidebar-primary-foreground: 220 30% 6%;
-  --sidebar-accent: 220 20% 15%;
-  --sidebar-accent-foreground: 40 30% 90%;
-  --sidebar-border: 220 20% 16%;
-  --sidebar-ring: 38 54% 54%;
+
+  --sidebar-background: 40 20% 97%;
+  --sidebar-foreground: 30 12% 10%;
+  --sidebar-primary: 30 50% 44%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 40 10% 93%;
+  --sidebar-accent-foreground: 30 12% 10%;
+  --sidebar-border: 30 8% 90%;
+  --sidebar-ring: 30 50% 44%;
 }
 
 @layer base {
@@ -52,6 +64,7 @@
     background: var(--lp-bg);
     color: var(--lp-text);
     font-family: "IBM Plex Sans", sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
 }
 
@@ -59,105 +72,88 @@
   .font-display {
     font-family: "Cormorant Garamond", serif;
   }
-
   .font-body {
     font-family: "IBM Plex Sans", sans-serif;
   }
 
+  /* Primary button — warm gold on dark */
   .lp-btn-primary {
-    background: linear-gradient(
-      135deg,
-      var(--lp-gold) 0%,
-      var(--lp-gold-dark) 100%
-    );
-    color: var(--lp-dark);
-    font-weight: 600;
-    font-size: 0.875rem;
-    letter-spacing: 0.02em;
-    transition: all 0.3s ease;
+    background: var(--lp-dark);
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.01em;
+    transition: all 0.25s ease;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
   }
-
   .lp-btn-primary:hover {
-    opacity: 0.9;
+    background: var(--lp-text-2);
     transform: translateY(-1px);
-    box-shadow: 0 8px 30px rgba(196, 160, 80, 0.25);
+    box-shadow: 0 6px 24px rgba(26, 22, 18, 0.18);
   }
 
-  .lp-btn-outline {
-    border: 1px solid rgba(196, 160, 80, 0.3);
-    color: var(--lp-text);
-    transition: all 0.3s ease;
-    cursor: pointer;
-  }
-
-  .lp-btn-outline:hover {
-    border-color: rgba(196, 160, 80, 0.6);
-    color: var(--lp-gold);
-  }
-
+  /* Card */
   .lp-card {
-    background: var(--lp-surface);
+    background: var(--lp-card);
     border: 1px solid var(--lp-border);
     transition:
-      border-color 0.3s ease,
+      box-shadow 0.3s ease,
       transform 0.3s ease;
   }
-
   .lp-card:hover {
-    border-color: rgba(196, 160, 80, 0.35);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.07);
+    transform: translateY(-2px);
   }
 
+  /* Form elements */
   .lp-label {
     display: block;
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
     text-transform: uppercase;
     color: var(--lp-muted);
     margin-bottom: 0.5rem;
   }
-
   .lp-input {
     width: 100%;
-    padding: 0.75rem 1rem;
+    padding: 0.8rem 1rem;
     border-radius: 0.75rem;
     border: 1px solid var(--lp-border);
-    background: rgba(255, 255, 255, 0.04);
+    background: var(--lp-surface);
     color: var(--lp-text);
     font-family: "IBM Plex Sans", sans-serif;
     font-size: 0.875rem;
     transition:
-      border-color 0.3s ease,
-      box-shadow 0.3s ease;
+      border-color 0.25s ease,
+      box-shadow 0.25s ease;
     outline: none;
     -webkit-appearance: none;
     appearance: none;
   }
-
   .lp-input::placeholder {
     color: var(--lp-muted);
-    opacity: 0.6;
+    opacity: 0.55;
   }
-
   .lp-input:focus {
-    border-color: rgba(196, 160, 80, 0.5);
-    box-shadow: 0 0 0 3px rgba(196, 160, 80, 0.08);
+    border-color: var(--lp-gold);
+    box-shadow: 0 0 0 3px rgba(160, 120, 64, 0.1);
   }
-
   .lp-input option {
     background: var(--lp-surface);
     color: var(--lp-text);
   }
 
+  /* Fade-in animation */
   .lp-fade-in {
-    animation: lpFadeIn 0.8s ease both;
+    animation: lpFadeIn 0.75s ease both;
   }
-
   @keyframes lpFadeIn {
     from {
       opacity: 0;
-      transform: translateY(24px);
+      transform: translateY(20px);
     }
     to {
       opacity: 1;
@@ -168,21 +164,21 @@
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--lp-dark);
+  background: var(--lp-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(196, 160, 80, 0.3);
+  background: rgba(0, 0, 0, 0.15);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(196, 160, 80, 0.5);
+  background: rgba(0, 0, 0, 0.25);
 }
 
 /* Selection */
 ::selection {
-  background: rgba(196, 160, 80, 0.2);
-  color: var(--lp-gold);
+  background: rgba(160, 120, 64, 0.15);
+  color: var(--lp-gold-dark);
 }

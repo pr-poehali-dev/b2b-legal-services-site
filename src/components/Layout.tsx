@@ -34,9 +34,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <nav
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
         style={{
-          background: scrolled ? "rgba(7,16,32,0.97)" : "transparent",
+          background: scrolled ? "rgba(248,247,244,0.96)" : "transparent",
           backdropFilter: scrolled ? "blur(20px)" : "none",
-          borderBottom: scrolled ? "1px solid rgba(196,160,80,0.1)" : "1px solid transparent",
+          borderBottom: scrolled ? "1px solid rgba(0,0,0,0.07)" : "1px solid transparent",
         }}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
@@ -63,7 +63,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 key={item.path}
                 to={item.path}
                 className="relative text-sm font-medium tracking-wider uppercase transition-all duration-300"
-                style={{ color: isActive(item.path) ? "var(--lp-gold)" : "var(--lp-muted)" }}
+                style={{ color: isActive(item.path) ? "var(--lp-text)" : "var(--lp-muted)" }}
               >
                 {item.label}
                 {isActive(item.path) && (
@@ -97,7 +97,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 key={item.path}
                 to={item.path}
                 className="text-sm uppercase tracking-wider font-medium"
-                style={{ color: isActive(item.path) ? "var(--lp-gold)" : "var(--lp-muted)" }}
+                style={{ color: isActive(item.path) ? "var(--lp-text)" : "var(--lp-muted)" }}
               >
                 {item.label}
               </Link>
